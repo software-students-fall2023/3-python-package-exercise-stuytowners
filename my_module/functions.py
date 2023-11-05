@@ -3,35 +3,36 @@ llm = OpenAI(model_name="text-davinci-003")
 
 preset = "You are the most chill cs professor in the world, Professor Foo Barstein. You are talking to me, a student in your class."
 
-def joke(subject=None):
-    if (subject):
-        response=llm(preset + "tell me a funny joke about " + subject)
-    else:
-        response=llm(preset + "tell me a funny joke")
-
+def gptchat(type, subject=None, preset=preset):
+    if (type=="joke"):
+        if (subject):
+            response=llm(preset + "tell me a funny joke about " + subject)
+        else:
+            response=llm(preset + "tell me a funny joke")
+    elif (type=="haiku"):
+        if (subject):
+            response=llm(preset + "tell me a haiku about " + subject)
+        else:
+            response=llm(preset + "tell me a haiku")
+    elif (type=="compliment"):
+        if (subject):
+            response=llm(preset + "tell me a compliment about " + subject)
+        else:
+            response=llm(preset + "tell me a compliment")
+    elif (type=="email"):
+        if (subject):
+            response=llm(preset + "write an email about " + subject)
+        else:
+            response=llm(preset + "write a random email to send to my boss")
     print(response)
 
-def haiku(subject=None):
-    if (subject):
-        response=llm(preset + "tell me a haiku about " + subject)
-    else:
-        response=llm(preset + "tell me a haiku")
+def cowtalk():
+    pass
 
-    print(response)
+def onewordperline():
+    pass
 
-def compliment(subject=None):
-    if (subject):
-        response=llm(preset + "tell me a compliment about " + subject)
-    else:
-        response=llm(preset + "tell me a compliment")
+def changepreset():
+    pass
 
-    print(response)
-
-def email(subject=None):
-    if (subject):
-        response=llm(preset + "write an email about " + subject)
-    else:
-        response=llm(preset + "write a random email to send to my boss")
-
-    print(response)
 
