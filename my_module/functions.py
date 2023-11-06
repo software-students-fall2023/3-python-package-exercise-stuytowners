@@ -1,15 +1,17 @@
 import openai
 
 def llm(question):
-   response = openai.Completion.create(
-   engine = "text-davinci-003",
-   prompt = question,
-   max_tokens=200,
-   temperature=0.99
-   )
-   answer = response.choices[0].text.strip()
+    response = openai.ChatCompletion.create(
+        model = "gpt-3.5-turbo",
+        messages=[
+        {"role": "user", "content": question},
+        ],
+        max_tokens=200,
+        temperature=0.99
+    )
+    answer = response['choices'][0]['message']['content']
 
-   return answer
+    return answer
 
 preset = "You are the most chill cs professor in the world, Professor Foo Barstein. You are talking to me, a student in your class."
 
