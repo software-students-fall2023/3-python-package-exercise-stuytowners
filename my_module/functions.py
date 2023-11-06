@@ -31,7 +31,7 @@ def cowtalk(response):
     moo_response = " ".join(" ".join(words[i:i+2]) for i in range(0, len(words), 2))
     print(moo_response)
 
-def onewordperline():
+def onewordperline(response):
     words = response.split()  # Split the response into words
     max_word_length = max(len(word) for word in words)
 
