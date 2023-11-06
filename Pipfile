@@ -5,8 +5,7 @@ name = "pypi"
 
 [packages]
 build = "*"
-langchain = "*"
-openai = "*"
+openai = "0.27.6"
 
 [dev-packages]
 pytest = "*"
