@@ -26,13 +26,16 @@ def gptchat(type, subject=None, preset=preset):
             response=llm(preset + "write a random email to send to my boss")
     print(response)
 
-def cowtalk():
+def cowtalk(response):
+    print(type(response))
     pass
 
 def onewordperline():
+
     pass
 
 def changepreset():
+
     pass
 
 
