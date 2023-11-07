@@ -47,3 +47,43 @@ def test_gptchat_additional_cases(mock_llm, test_input, expected):
     response = gptchat(type=type_, subject=subject_)
     assert expected == response
 
+
+#cowtalk test
+# Mock `gptchat` response as it's not directly called from `cowtalk`
+@pytest.fixture
+def mock_gptchat(monkeypatch):
+    def mock(*args, **kwargs):
+        # Return the input if provided, else a default string
+        return args[0] if args else "This is a mocked response from gptchat function."
+    monkeypatch.setattr("my_module.functions.gptchat", mock)
+
+# Helper function to create the expected 'moo' pattern
+def create_moo_pattern(sentence):
+    words = sentence.split()
+    moo_pattern = []
+    for i in range(0, len(words), 3):
+        moo_pattern.extend(words[i:i+3])
+        moo_pattern.append("moo")
+    return " ".join(moo_pattern).rstrip(' moo')
+
+# Test for a regular sentence with multiples of three words
+def test_cowtalk_regular_sentence(mock_gptchat):
+    test_input = "This is a test sentence for the cowtalk function."
+    expected_output = create_moo_pattern(test_input)
+    result = cowtalk(test_input)
+    assert result == expected_output
+
+# Test for a sentence with a non-multiple of three words
+def test_cowtalk_non_multiple_of_three(mock_gptchat):
+    test_input = "One two three four five"
+    expected_output = create_moo_pattern(test_input)
+    result = cowtalk(test_input)
+    assert result == expected_output
+
+# Test for an empty string
+def test_cowtalk_empty_string(mock_gptchat):
+    test_input = ""
+    expected_output = ""  # Assuming no "moo" added if there are no words
+    result = cowtalk(test_input)
+    assert result == expected_output
+
