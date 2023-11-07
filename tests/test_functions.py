@@ -44,5 +44,15 @@ def test_gptchat_invalid_type(mock_llm, capsys, test_input, expected):
     captured = capsys.readouterr()  # Capture the print output
     assert expected in captured.out  # Check if the expected string is in the output
 
+@pytest.mark.parametrize("test_input, expected", [
+    (("", ""), "mocked response"),  # Empty type and subject
+    (("joke", ""), "mocked response"),  # Valid type with empty subject
+    (("", "space"), "mocked response"),  # Empty type with valid subject
+])
+def test_gptchat_empty_strings(mock_llm, capsys, test_input, expected):
+    type_, subject_ = test_input
+    gptchat(type=type_, subject=subject_)
+    captured = capsys.readouterr()  # Capture the print output
+    assert expected in captured.out  # Check if the expected string is in the output
 
 
