@@ -11,7 +11,7 @@ def llm(question):
         max_tokens=200,
         temperature=0.99
     )
-    answer = completion['choices'][0]['message']['content']
+    answer = completion.choices[0].message.content
 
     return answer
 
