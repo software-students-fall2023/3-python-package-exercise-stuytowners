@@ -61,20 +61,9 @@ def cowtalk(type='joke'):
     return moo_sentence
 
 
-def onewordperline(type=False):
-    words = gptchat(type).split()  # Split the response into words
-    max_word_length = max(len(word) for word in words)
-    output_lines = []
-
-    for i in range(max_word_length):
-        line = ''
-        for word in words:
-            if i < len(word):
-                line += (word[i] + ' ')
-            else:
-                line += ('  ')  # Add two spaces for alignment
-        output_lines.append(line)
-    return '\n'.join(output_lines)
+def onewordperline(input_string):
+    words = input_string.split()  # Split the input string into words
+    return '\n'.join(words)      # Join the words with a newline character
 
 
 def changepreset():
