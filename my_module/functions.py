@@ -43,13 +43,26 @@ def gptchat(type=None, subject=None, preset=preset):
             response=llm(preset + "say something random")
     print(response)
 
-def cowtalk():
-    pass
+def cowtalk(response):
+    words = response.split()
+    moo_response = " ".join(" ".join(words[i:i+2]) for i in range(0, len(words), 2))
+    print(moo_response)
 
-def onewordperline():
-    pass
+def onewordperline(response):
+    words = response.split()  # Split the response into words
+    max_word_length = max(len(word) for word in words)
+
+    for i in range(max_word_length):
+        for word in words:
+            if i < len(word):
+                print(word[i], end=' ')
+            else:
+                print('  ', end=' ')  # Print two spaces for alignment
+        print()
 
 def changepreset():
-    pass
+    new_preset = input("Enter the new preset: ")
+    global preset  # Use the 'preset' variable defined outside the function
+    preset = new_preset
 
 
