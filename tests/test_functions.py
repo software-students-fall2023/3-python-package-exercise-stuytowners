@@ -87,3 +87,22 @@ def test_cowtalk_empty_string(mock_gptchat):
     result = cowtalk(test_input)
     assert result == expected_output
 
+
+
+# test one wrod per line
+# Test cases
+def test_onewordperline_normal():
+    input_string = "hello world"
+    expected_output = "hello\nworld"
+    assert onewordperline(input_string) == expected_output
+
+def test_onewordperline_with_punctuation():
+    input_string = "hello, world!"
+    expected_output = "hello,\nworld!"
+    assert onewordperline(input_string) == expected_output
+
+def test_onewordperline_with_multiple_spaces():
+    input_string = "hello   world"  # Multiple spaces between words
+    expected_output = "hello\nworld"
+    assert onewordperline(input_string) == expected_output
+
