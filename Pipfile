@@ -6,8 +6,6 @@ name = "pypi"
 [packages]
 build = "*"
 openai = "0.27.6"
-pytest = "*"
-pytest-mock = "*"
 
 [dev-packages]
 pytest = "*"
