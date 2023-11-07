@@ -108,6 +108,3 @@ def test_changepreset_empty_input(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: '')
     changepreset()
     assert preset == ''
-
-if __name__ == '__main__':
-    pytest.main()
