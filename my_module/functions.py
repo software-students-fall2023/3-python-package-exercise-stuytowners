@@ -1,7 +1,8 @@
-import openai
+from openai import OpenAI
+client = OpenAI()
 
 def llm(question):
-    response = openai.ChatCompletion.create(
+    completion = client.chat.completions.create(
         model = "gpt-3.5-turbo",
         messages=[
         {"role": "user", "content": question},
@@ -9,7 +10,8 @@ def llm(question):
         max_tokens=200,
         temperature=0.99
     )
-    answer = response['choices'][0]['message']['content']
+    answer = completion.choices[0].message.content
+    # answer = completion['choices'][0]['message']['content']
 
     return answer
 
