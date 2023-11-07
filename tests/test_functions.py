@@ -33,3 +33,16 @@ def test_gptchat(mock_llm, capsys, test_input, expected):
     gptchat(type=type_, subject=subject_)
     captured = capsys.readouterr()  # Capture the print output
     assert expected in captured.out  # Check if the expected string is in the output
+
+@pytest.mark.parametrize("test_input, expected", [
+    (("unknown_type", "anything"), "mocked response"),  # Invalid type with subject
+    (("unknown_type", None), "mocked response"),  # Invalid type without subject
+])
+def test_gptchat_invalid_type(mock_llm, capsys, test_input, expected):
+    type_, subject_ = test_input
+    gptchat(type=type_, subject=subject_)
+    captured = capsys.readouterr()  # Capture the print output
+    assert expected in captured.out  # Check if the expected string is in the output
+
+
+
