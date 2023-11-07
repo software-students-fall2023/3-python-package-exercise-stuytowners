@@ -1,6 +1,5 @@
 import pytest
 from unittest.mock import patch
-# Ensure you replace 'my_module' with the actual name of your module
 from my_module.functions import gptchat  
 
 # A mock response that mimics the OpenAI API response structure
