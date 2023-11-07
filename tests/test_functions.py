@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import patch
-from pytest_mock import mocker
-from my_module.functions import onewordperline, changepreset, gptchat, cowtalk
 from io import StringIO
+from my_module.functions import onewordperline, changepreset, gptchat, cowtalk
+
 
 # A mock response that mimics the OpenAI API response structure
 mock_openai_response = {
@@ -58,21 +58,56 @@ def test_gptchat_empty_strings(mock_llm, capsys, test_input, expected):
     captured = capsys.readouterr()  # Capture the print output
     assert expected in captured.out  # Check if the expected string is in the output
 
+#Cowtalk test
+# Helper function to create the expected 'moo' pattern
+def create_moo_pattern(sentence):
+    words = sentence.split()
+    moo_pattern = []
+    for i in range(0, len(words), 3):
+        moo_pattern.extend(words[i:i+3])
+        moo_pattern.append("moo")
+    return " ".join(moo_pattern).strip()
+
+# Test for a regular sentence with multiples of three words
+def test_cowtalk_regular_sentence(capsys):
+    test_input = "This is a test sentence for the cowtalk function."
+    expected_output = create_moo_pattern(test_input) + "\n"
+    cowtalk(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+# Test for a sentence with a non-multiple of three words
+def test_cowtalk_non_multiple_of_three(capsys):
+    test_input = "One two three four five"
+    expected_output = create_moo_pattern(test_input) + "\n"
+    cowtalk(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+# Test for an empty string
+def test_cowtalk_empty_string(capsys):
+    test_input = ""
+    expected_output = "\n"  # Assuming no "moo" added if there are no words
+    cowtalk(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+
+#Oneword per line check
 @pytest.mark.parametrize("input_type, expected_output", [
     ("test", "T i a t "),
     ("example", "H W "),
     ("default", ""),
 ])
-
 def test_onewordperline(mocker, input_type, expected_output):
     # Mock the gptchat function to return controlled input
-    mocker.patch('functions.gptchat', return_value=input_type)
+    mocker.patch('my_module.functions.gptchat', return_value=input_type)
     
     # Call the onewordperline function
     result = onewordperline()
     
     # Check if the result matches the expected output
-    assert onewordperline() == expected_output
+    assert result == expected_output
 
 # def test_onewordperline_default_type(capsys):
 #     onewordperline(type='joke')
@@ -92,6 +127,7 @@ def test_onewordperline(mocker, input_type, expected_output):
 
 # print(test_onewordperline_empty_input())
 
+#change preset test
 preset = None
 
 def test_changepreset_input(monkeypatch):
