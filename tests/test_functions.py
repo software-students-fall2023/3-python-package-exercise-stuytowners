@@ -1,28 +1,52 @@
 # tests for one_word_per_line
 import pytest
+from pytest_mock import mocker
 import sys
 
 sys.path.append('my_module')
 
 # Now you can import your module
-from functions import onewordperline, changepreset
+from functions import onewordperline, changepreset, gptchat
+
+@pytest.mark.parametrize("input_type, expected_output", [
+    ("test", "T i a t "),
+    ("example", "H W "),
+    ("default", ""),
+])
+
+def test_onewordperline(mocker, input_type, expected_output):
+    # Mock the gptchat function to return controlled input
+    mocker.patch('functions.gptchat', return_value=input_type)
+    
+    # Call the onewordperline function
+    result = onewordperline()
+    
+    # Check if the result matches the expected output
+    assert onewordperline() == expected_output
 
 
 
-def test_onewordperline_default_type(capsys):
-    onewordperline(type='joke')
-    captured = capsys.readouterr()
-    assert captured.out.strip() == "T h i s   i s   a   t e s t   j o k e"
+# Run the tests
+if __name__ == '__main__':
+    pytest.main()
 
-def test_onewordperline_custom_type(capsys):
-    onewordperline(type='haiku')
-    captured = capsys.readouterr()
-    assert captured.out.strip() == "T h i s   i s   a   t e s t   s t o r y"
 
-def test_onewordperline_empty_response(capsys):
-    onewordperline(type=None)
-    captured = capsys.readouterr()
-    assert captured.out.strip() == ""
+
+
+# def test_onewordperline_default_type(capsys):
+#     onewordperline(type='joke')
+#     captured = capsys.readouterr()
+#     assert captured.out.strip() == "T h i s   i s   a   t e s t   j o k e"
+
+# def test_onewordperline_custom_type(capsys):
+#     onewordperline(type='haiku')
+#     captured = capsys.readouterr()
+#     assert captured.out.strip() == "T h i s   i s   a   t e s t   s t o r y"
+
+# def test_onewordperline_empty_response(capsys):
+#     onewordperline(type=None)
+#     captured = capsys.readouterr()
+#     assert captured.out.strip() == ""
 
 
 # print(test_onewordperline_empty_input())

@@ -50,7 +50,7 @@ def cowtalk(type='joke'):
     print(moo_words)
     
 
-def onewordperline(type=None):
+def onewordperline(type=False):
     words = gptchat(type).split()  # Split the response into words
     max_word_length = max(len(word) for word in words)
 
@@ -70,7 +70,8 @@ def changepreset():
 # this changes the preset phrase up top, yay!
 
 def main():
-    print(onewordperline())
+    # print('hi;;',onewordperline())
+    pass
 
 if __name__ == "__main__":
     main()
