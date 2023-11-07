@@ -62,8 +62,11 @@ def onewordperline(type=False):
                 print('  ', end=' ')  # Print two spaces for alignment
         print()
 
-def changepreset():
-    new_preset = input("Enter the new preset: ")
+
+def changepreset(new_preset):
+    # new_preset = input("Enter the new preset: ")
+    if type(new_preset) != str:
+        raise TypeError("The new preset must be a string.")
     global preset  # Use the 'preset' variable defined outside the function
     preset = new_preset
 

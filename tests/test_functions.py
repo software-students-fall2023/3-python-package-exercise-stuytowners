@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import patch
 from io import StringIO
 from my_module.functions import onewordperline, changepreset, gptchat, cowtalk
+import my_module.functions as functions
 
 
 # A mock response that mimics the OpenAI API response structure
@@ -92,6 +93,44 @@ def test_cowtalk_empty_string(capsys):
     captured = capsys.readouterr()
     assert captured.out == expected_output
 
+def create_onewordperline_pattern(sentence):
+    words = sentence.split()
+    max_word_length = max(len(word) for word in words)
+    pattern = ""
+    for i in range(max_word_length):
+        for word in words:
+            if i < len(word):
+                pattern += word[i] + " "
+            else:
+                pattern += "  "
+        pattern += "\n"
+    return pattern
+
+def test_onewordperline_regular_sentence(capsys):
+    test_input = "This is a test sentence for the onewordperline function."
+    expected_output = create_onewordperline_pattern(test_input)
+    onewordperline(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+def test_onewordperline_non_multiple_of_three(capsys):
+    test_input = "One two three four five"
+    expected_output = create_onewordperline_pattern(test_input)
+    onewordperline(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+def test_onewordperline_empty_string(capsys):
+    test_input = ""
+    expected_output = "\n"  # Assuming no "moo" added if there are no words
+    onewordperline(test_input)
+    captured = capsys.readouterr()
+    assert captured.out == expected_output
+
+
+
+
+
 
 #Oneword per line check
 @pytest.mark.parametrize("input_type, expected_output", [
@@ -127,20 +166,17 @@ def test_onewordperline(mocker, input_type, expected_output):
 
 # print(test_onewordperline_empty_input())
 
-#change preset test
-preset = None
+def test_changepreset():
+    new_preset = "New preset value"  # Simulating user input
+    changepreset(new_preset)
+    assert functions.preset == new_preset
 
-def test_changepreset_input(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'NewPreset')
-    changepreset()
-    assert preset == 'NewPreset'
+def test_changepreset_empty_input():
+    new_preset = ""
+    changepreset(new_preset)
+    assert functions.preset == new_preset
 
-def test_changepreset_multiple_inputs(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'AnotherPreset')
-    changepreset()
-    assert preset == 'AnotherPreset'
-
-def test_changepreset_empty_input(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: '')
-    changepreset()
-    assert preset == ''
+def test_changepreset_non_string_input():
+    non_string_input = 42  # An example of a non-string input
+    with pytest.raises(TypeError):
+        changepreset(non_string_input)
