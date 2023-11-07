@@ -10,17 +10,17 @@ from functions import onewordperline, changepreset
 
 
 def test_onewordperline_default_type(capsys):
-    onewordperline()
+    onewordperline(type='joke')
     captured = capsys.readouterr()
     assert captured.out.strip() == "T h i s   i s   a   t e s t   j o k e"
 
 def test_onewordperline_custom_type(capsys):
-    onewordperline(type='story')
+    onewordperline(type='haiku')
     captured = capsys.readouterr()
     assert captured.out.strip() == "T h i s   i s   a   t e s t   s t o r y"
 
 def test_onewordperline_empty_response(capsys):
-    onewordperline()
+    onewordperline(type=None)
     captured = capsys.readouterr()
     assert captured.out.strip() == ""
 
