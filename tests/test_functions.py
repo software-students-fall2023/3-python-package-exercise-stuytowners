@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from my_module.functions import onewordperline, changepreset, gptchat, cowtalk, preset
+from src.my_module.functions import onewordperline, changepreset, gptchat, cowtalk, preset
 
 # A mock response that mimics the OpenAI API response structure
 mock_openai_response = {
@@ -15,7 +15,7 @@ mock_openai_response = {
 def mock_llm(monkeypatch):
     def mock(*args, **kwargs):
         return 'mocked response'
-    monkeypatch.setattr("my_module.functions.llm", mock)
+    monkeypatch.setattr("src.my_module.functions.llm", mock)
 
 # Tests for gptchat
 @pytest.mark.parametrize("test_input, expected", [
@@ -55,7 +55,7 @@ def mock_gptchat(monkeypatch):
     def mock(*args, **kwargs):
         # Return the input if provided, else a default string
         return args[0] if args else "This is a mocked response from gptchat function."
-    monkeypatch.setattr("my_module.functions.gptchat", mock)
+    monkeypatch.setattr("src.my_module.functions.gptchat", mock)
 
 # Helper function to create the expected 'moo' pattern
 def create_moo_pattern(sentence):
