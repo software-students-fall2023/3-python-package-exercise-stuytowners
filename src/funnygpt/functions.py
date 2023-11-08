@@ -48,8 +48,8 @@ def gptchat(type=None, subject=None, preset=preset):
     return response
 
 
-def cowtalk(type='joke'):
-    words = gptchat(type).split()
+def cowtalk(input):
+    words = input.split()
     # Create a new list that includes 'moo' after every three words
     moo_words = []
     for i in range(0, len(words), 3):
