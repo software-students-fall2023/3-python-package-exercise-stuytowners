@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from my_module.functions import onewordperline, changepreset, gptchat, cowtalk
+from my_module.functions import onewordperline, changepreset, gptchat, cowtalk, preset
 
 # A mock response that mimics the OpenAI API response structure
 mock_openai_response = {
@@ -106,3 +106,21 @@ def test_onewordperline_with_multiple_spaces():
     expected_output = "hello\nworld"
     assert onewordperline(input_string) == expected_output
 
+
+def test_changepreset_updates_global_preset(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: "New Preset")
+    result = changepreset()
+    assert result == "New Preset"
+
+
+def test_changepreset_empty_input(monkeypatch):
+    global preset
+    monkeypatch.setattr('builtins.input', lambda _: "")
+    result = changepreset()
+    assert result == preset
+
+def test_changepreset_space_input(monkeypatch):
+    global preset
+    monkeypatch.setattr('builtins.input', lambda _: " ")
+    result = changepreset()
+    assert result == preset

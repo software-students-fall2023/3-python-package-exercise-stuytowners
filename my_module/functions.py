@@ -67,9 +67,18 @@ def onewordperline(input_string):
 
 
 def changepreset():
-    new_preset = input("Enter the new preset: ")
     global preset  # Use the 'preset' variable defined outside the function
+    original_preset=preset
+    new_preset = input("Enter the new preset: ")
     preset = new_preset
+    if preset == "":
+        preset=original_preset
+        return preset
+    elif preset == " ":
+        preset=original_preset
+        return preset
+    return preset
+
 
 
 def main():
