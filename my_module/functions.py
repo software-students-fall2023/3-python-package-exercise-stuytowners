@@ -70,14 +70,12 @@ def changepreset():
     global preset  # Use the 'preset' variable defined outside the function
     original_preset=preset
     new_preset = input("Enter the new preset: ")
-    preset = new_preset
-    if preset == "":
-        preset=original_preset
-        return preset
-    elif preset == " ":
-        preset=original_preset
-        return preset
-    return preset
+    if new_preset == "":
+        return original_preset
+    elif new_preset == " ":
+        return original_preset
+    else:
+        return new_preset
 
 
 

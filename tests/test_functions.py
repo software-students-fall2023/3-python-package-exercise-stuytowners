@@ -115,12 +115,17 @@ def test_changepreset_updates_global_preset(monkeypatch):
 
 def test_changepreset_empty_input(monkeypatch):
     global preset
+    # Assume preset has a predefined value before the test
+    original_preset = preset
     monkeypatch.setattr('builtins.input', lambda _: "")
     result = changepreset()
-    assert result == preset
+    assert result == original_preset  # Expecting the original preset after empty input
 
 def test_changepreset_space_input(monkeypatch):
     global preset
+    # Assume preset has a predefined value before the test
+    original_preset = preset
     monkeypatch.setattr('builtins.input', lambda _: " ")
     result = changepreset()
-    assert result == preset
+    assert result == original_preset  # Expecting the original preset after space input
+
