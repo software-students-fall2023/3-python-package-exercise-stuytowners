@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/funnygpt.svg)](https://badge.fury.io/py/funnygpt)
+
 # Contributors
 [Angela Tao](https://github.com/xinrantaoangela)
 
