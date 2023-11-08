@@ -11,6 +11,19 @@
 #### What is this package?
 This package was created so you can have Professor Foo Barstein talk with you straight from your terminal. Professor Barstein can do four things - tell you a joke, tell you a haiku, tell you a compliment, and write you an email. Professor Barstein is a fictional character and powered by GPT-3.
 
+### How to use this package:
+1. Install the package by writing the following command in the shell:
+  ```pip install funnygpt==1.0.8```
+2. set your openai api key using: export OPENAI_API_KEY=(your key)
+  - run this line in shell
+2. Import the package by writing the following command in the shell:
+  ```import funnygpt```
+  - if this step does not work on your machine, try running:
+    - pip install --upgrade httpx httpcore
+3. Run the following command in the shell to see some functionality!:
+  ```funnygpt.gptchat('joke)```
+
+
 ### Features
 1. gptchat: will take the role of Professor Foo Barstein and use ChatGPT to generate a joke, haiku, compliment, or an email so you don't have to be lonely in your terminal anymore. 
 
