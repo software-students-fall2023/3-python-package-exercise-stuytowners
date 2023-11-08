@@ -1,6 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project]
 name = "funnygpt"
-version = "1.0.1"
+version = "1.0.6"
 authors = [
   { name="Luke Bernstein", email="lnb337@nyu.edu" },
   { name="Angela Tao", email="xt2016@nyu.edu" },
@@ -15,6 +21,10 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "openai"
+]
+
 
 [project.urls]
 "Homepage" = "https://github.com/software-students-fall2023/3-python-package-exercise-stuytowners/tree/main"
