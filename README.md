@@ -3,9 +3,9 @@
 
 [Luke Bernsterin](https://github.com/lnbernstein)
 
-[Charles Hu](https://github.com/comeom))
+[Charles Hu](https://github.com/comeom)
 
-[James Luo](https://github.com/jamesluo)
+[James Luo](https://github.com/jamesluo802)
 # Python Package: Foo Barstein
 [Package Link](https://pypi.org/project/funny-gpt-stuytowners/0.0.2/#description)
 
