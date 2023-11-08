@@ -1,8 +1,11 @@
 [project]
-name = "funny_gpt_stuytowners"
-version = "0.0.2"
+name = "funnygpt"
+version = "1.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Luke Bernstein", email="lnb337@nyu.edu" },
+  { name="Angela Tao", email="xt2016@nyu.edu" },
+  { name="Charles Hu", email="cch9399@nyu.edu" },
+  { name="James Luo", email="jl11335@nyu.edu" }
 ]
 description = "A package for project 3 for stuytowners"
 readme = "README.md"

@@ -1,7 +1,7 @@
 # Contributors
 [Angela Tao](https://github.com/xinrantaoangela)
 
-[Luke Bernsterin](https://github.com/lnbernstein)
+[Luke Bernstein](https://github.com/lnbernstein)
 
 [Charles Hu](https://github.com/comeom)
 
