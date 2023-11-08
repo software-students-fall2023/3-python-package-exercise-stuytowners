@@ -1,6 +1,7 @@
 # Python Package: Foo Barstein
-
+[Package Link](https://pypi.org/project/funny-gpt-stuytowners/0.0.2/#description)
 This package was created so you can have Professor Foo Barstein talk with you straight from your terminal. Professor Barstein can do four things - tell you a joke, tell you a haiku, tell you a compliment, and write you an email. Professor Barstein is a fictional character and powered by GPT-3.
+
 
 ### How to Run demo
 1. Set your OpenAI API Key by writing the following command in the shell:
