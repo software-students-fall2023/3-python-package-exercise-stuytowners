@@ -1,3 +1,5 @@
+(LICENSE)
+
 # Contributors
 [Angela Tao](https://github.com/xinrantaoangela)
 
