@@ -7,11 +7,22 @@
 
 [James Luo](https://github.com/jamesluo802)
 
-# Python Package: Foo Barstein
-[Package Link](https://pypi.org/project/funny-gpt-stuytowners/0.0.2/#description)
-
-
+# [Python Package: Foo Barstein](https://pypi.org/project/funny-gpt-stuytowners/0.0.2/#description)
+#### What is this package?
 This package was created so you can have Professor Foo Barstein talk with you straight from your terminal. Professor Barstein can do four things - tell you a joke, tell you a haiku, tell you a compliment, and write you an email. Professor Barstein is a fictional character and powered by GPT-3.
+
+### Features
+1. gptchat
+  gptchat will take the role of Professor Foo Barstein and use ChatGPT to generate a joke, haiku, compliment, or an email so you don't have to be lonely in your terminal anymore. 
+
+2. cowtalk
+  cowtalk will take the response from ChatGPT-3 and add "moo" every 3 words so you can talk with cows!
+  
+3. onewordperline
+  onewordperline will play around with how the text is displayed. Instead of left to right, you will be reading from top to bottom. 
+
+4. changepreset
+  changepreset will change how ChatGPT answers your question. Use this function to give ChatGPT a different role than Professor Foo Barstein! 
 
 
 ### How to Run demo
@@ -31,15 +42,3 @@ This package was created so you can have Professor Foo Barstein talk with you st
 4.run tests by writing the following command in the shell:
   ```pytest test_functions.py```
 
-### What the Functions do 
-1. gptchat
-  gptchat will take the role of Professor Foo Barstein and use ChatGPT to generate a joke, haiku, compliment, or an email so you don't have to be lonely in your terminal anymore. 
-
-2. cowtalk
-  cowtalk will take the response from ChatGPT-3 and add "moo" every 3 words so you can talk with cows!
-  
-3. onewordperline
-  onewordperline will play around with how the text is displayed. Instead of left to right, you will be reading from top to bottom. 
-
-4. changepreset
-  changepreset will change how ChatGPT answers your question. Use this function to give ChatGPT a different role than Professor Foo Barstein! 
