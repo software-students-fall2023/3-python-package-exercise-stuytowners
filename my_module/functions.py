@@ -1,7 +1,6 @@
 from openai import OpenAI
 client = OpenAI()
 
-
 def llm(question):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -11,10 +10,9 @@ def llm(question):
         max_tokens=200,
         temperature=0.99
     )
-    answer = completion['choices'][0]['message']['content']
+    answer = completion.choices[0].message.content
 
     return answer
-
 
 preset = "You are the most chill cs professor in the world, Professor Foo Barstein. You are talking to me, a student in your class."
 
