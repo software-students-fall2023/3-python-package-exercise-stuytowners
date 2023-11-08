@@ -6,7 +6,7 @@ where = ["src"]
 
 [project]
 name = "funnygpt"
-version = "1.0.8"
+version = "1.0.9"
 authors = [
   { name="Luke Bernstein", email="lnb337@nyu.edu" },
   { name="Angela Tao", email="xt2016@nyu.edu" },
