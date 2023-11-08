@@ -107,27 +107,20 @@ def test_onewordperline_with_multiple_spaces():
     assert onewordperline(input_string) == expected_output
 
 
-@pytest.fixture
-def mock_user_input(monkeypatch):
-    def input_mock(*args):
-        return "New preset text"
-    monkeypatch.setattr('builtins.input', input_mock)
-
-def test_changepreset_valid_input(mock_user_input):
-    original_preset = preset
-    changepreset()
-    assert preset == "New preset text"
-
-def test_changepreset_empty_input(mock_user_input):
-    original_preset = preset
-    changepreset()
-    assert preset == original_preset
-
-def test_changepreset_whitespace_input(mock_user_input):
-    original_preset = preset
-    changepreset()
-    assert preset == original_preset
+def test_changepreset_updates_global_preset(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: "New Preset")
+    result = changepreset()
+    assert result == "New Preset"
 
 
+def test_changepreset_empty_input(monkeypatch):
+    global preset
+    monkeypatch.setattr('builtins.input', lambda _: "")
+    result = changepreset()
+    assert result == preset
 
-
+def test_changepreset_space_input(monkeypatch):
+    global preset
+    monkeypatch.setattr('builtins.input', lambda _: " ")
+    result = changepreset()
+    assert result == preset
