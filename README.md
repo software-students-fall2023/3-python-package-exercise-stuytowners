@@ -7,7 +7,7 @@
 
 [James Luo](https://github.com/jamesluo802)
 
-# [Python Package: Foo Barstein](https://pypi.org/project/funnygpt/1.0.6/)
+# [Python Package: Foo Barstein](https://pypi.org/project/funnygpt/1.0.8/)
 #### What is this package?
 This package was created so you can have Professor Foo Barstein talk with you straight from your terminal. Professor Barstein can do four things - tell you a joke, tell you a haiku, tell you a compliment, and write you an email. Professor Barstein is a fictional character and powered by GPT-3.
 
