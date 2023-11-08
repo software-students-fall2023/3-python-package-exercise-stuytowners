@@ -1,4 +1,4 @@
-from my_module import functions
+from src.funnygpt import functions
 
 def main():
     print(functions.gptchat())

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from funnygpt.functions import onewordperline, changepreset, gptchat, cowtalk, preset
+from src.funnygpt.functions import onewordperline, changepreset, gptchat, cowtalk, preset
 
 # A mock response that mimics the OpenAI API response structure
 mock_openai_response = {
